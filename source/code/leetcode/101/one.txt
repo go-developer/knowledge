@@ -1,0 +1,34 @@
+// isSymmetric 递归实现
+//
+// Author : go_developer@163.com<白茶清欢>
+//
+// Date : 4:37 下午 2021/2/14
+func isSymmetric(root *TreeNode) bool {
+	if root == nil {
+		return true
+	}
+	if nil == root.Left && nil == root.Right {
+		return true
+	}
+
+	if nil == root.Left || nil == root.Right {
+		return false
+	}
+	return check(root.Left, root.Right)
+}
+
+// check 递归检查
+//
+// Author : go_developer@163.com<白茶清欢>
+//
+// Date : 7:46 下午 2021/2/14
+func check(p, q *TreeNode) bool {
+	if p == nil && q == nil {
+		return true
+	}
+	if p == nil || q == nil {
+		return false
+	}
+	// 根节点值相等,左节点值等于右节点值
+	return p.Val == q.Val && check(p.Left, q.Right) && check(p.Right, q.Left)
+}

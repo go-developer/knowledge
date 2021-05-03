@@ -1,0 +1,15 @@
+// reverseWordsWithAPI 使用内置API函数处理
+//
+// Author : go_developer@163.com<白茶清欢>
+//
+// Date : 7:58 下午 2021/1/10
+func reverseWordsWithAPI(s string) string {
+	sArr := strings.Split(s, " ")
+	filterArr := make([]string, 0)
+	for i := len(sArr) - 1; i >= 0; i-- {
+		if len(sArr[i]) > 0 {
+			filterArr = append(filterArr, sArr[i])
+		}
+	}
+	return strings.Join(filterArr, " ")
+}

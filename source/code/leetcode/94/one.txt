@@ -1,0 +1,27 @@
+// inorderTraversal 二叉树中序遍历递归实现
+//
+// Author : go_developer@163.com<白茶清欢>
+//
+// Date : 11:57 下午 2021/2/12
+func inorderTraversal(root *TreeNode) []int {
+	r := make([]int, 0)
+	if nil == root {
+		return r
+	}
+
+	mid(&r, root)
+	return r
+}
+
+func mid(res *[]int, root *TreeNode) {
+	//先遍历左子树
+	if root.Left != nil {
+		mid(res, root.Left)
+	}
+	//再遍历自己
+	*res = append(*res, root.Val)
+	//最后遍历右子树
+	if root.Right != nil {
+		mid(res, root.Right)
+	}
+}

@@ -1,0 +1,40 @@
+
+// inorderTraversalWithStack 中序遍历迭代实现
+//
+// Author : go_developer@163.com<白茶清欢>
+//
+// Date : 1:13 上午 2021/2/13
+func inorderTraversalWithStack(root *TreeNode) []int {
+	// 中序遍历的顺序是左中右
+	// 本算法采用迭代的方法完成，采用的核心工具是栈
+	res := make([]int, 0)
+	if root == nil {
+		return res
+	}
+	stack := []*TreeNode{root}
+	flag := false
+	for len(stack) != 0 {
+		if flag {
+			// 当前路线左子树已经遍历完
+			rightChild := stack[len(stack)-1].Right
+			res = append(res, stack[len(stack)-1].Val)
+			stack = stack[:len(stack)-1]
+			// 说明有右子树，所以将右子树的根结点入栈
+			if rightChild != nil {
+				stack = append(stack, rightChild)
+				// 重新初始化标志，表示该根节点的左子树还没有遍历完
+				flag = false
+			}
+			continue
+		}
+		leftChild := stack[len(stack)-1].Left
+		if leftChild != nil {
+			// 左子树入栈
+			stack = append(stack, leftChild)
+			continue
+		}
+		// 左子树为空，说明左子树已经遍历完毕
+		flag = true
+	}
+	return res
+}

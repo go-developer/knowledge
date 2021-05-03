@@ -1,0 +1,10 @@
+.category-lists
+  .category-title.is-center= _p('page.category')
+    |  - 
+    span.category-amount= site.categories.length
+  div!= list_categories()
+  <div id="posts-calendar"></div>
+  <div id="posts-chart"></div>
+  <div id="tags-chart" data-length="50"></div>
+  <div id="categories-chart"></div>
+  <div id="categories-radar"></div>

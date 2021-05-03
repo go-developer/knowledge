@@ -1,0 +1,23 @@
+// isSameTree 深度优先对比
+//
+// Author : go_developer@163.com<白茶清欢>
+//
+// Date : 11:23 下午 2021/2/13
+func isSameTree(p *TreeNode, q *TreeNode) bool {
+	// 全部是nil，相等
+	if nil == p && nil == q {
+		return true
+	}
+	// 只有一个为nil,不相等
+	if nil == p || nil == q {
+		return false
+	}
+
+	// 值不相等
+	if p.Val != q.Val {
+		return false
+	}
+
+	// 递归对比左右子树
+	return isSameTree(p.Left, q.Left) && isSameTree(p.Right, q.Right)
+}

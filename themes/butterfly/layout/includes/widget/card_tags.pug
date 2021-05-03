@@ -1,0 +1,14 @@
+if theme.aside.card_tags.enable
+  if site.tags.length
+    .card-widget.card-tags
+      .card-content
+        .item-headline
+          i.fa.fa-tags(aria-hidden="true")
+          span= _p('aside.card_tags')
+          script(type="text/javascript" charset="utf-8" src="/js/tagcloud.js")
+          script(type="text/javascript" charset="utf-8" src="/js/tagcanvas.js")
+          #myCanvasContainer.widget.tagcloud(align='center', style='width=100%;height=100%;margin:0;padding:0')
+            canvas#resCanvas(width=200,style='width=100%;height=100%;margin:0;padding:0;display:block')
+              != tagcloud()
+            br
+            != tagcloud({min_font: 16, max_font: 24, amount: 50, color: true, start_color: '#0D0E0F', end_color: '#99a9bf'})
